@@ -5,8 +5,11 @@
  */
 package main;
 
+import com.bulenkov.darcula.DarculaLaf;
+import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.basic.BasicLookAndFeel;
 
 /**
  *
@@ -44,31 +47,27 @@ public class Main extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        imagem = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(421, 193));
-        setPreferredSize(new java.awt.Dimension(584, 166));
+        setTitle("Cálculo de divisão de tensão");
+        setMinimumSize(new java.awt.Dimension(476, 193));
         setResizable(false);
         getContentPane().setLayout(null);
+
+        tensaoEntrada.setNextFocusableComponent(resistor1);
         getContentPane().add(tensaoEntrada);
         tensaoEntrada.setBounds(140, 30, 80, 24);
 
-        resistor1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                resistor1FocusLost(evt);
-            }
-        });
+        resistor1.setNextFocusableComponent(resistor2);
         getContentPane().add(resistor1);
         resistor1.setBounds(140, 60, 80, 24);
 
-        resistor2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                resistor2FocusLost(evt);
-            }
-        });
+        resistor2.setNextFocusableComponent(tensaoSaida);
         getContentPane().add(resistor2);
         resistor2.setBounds(140, 90, 80, 24);
+
+        tensaoSaida.setNextFocusableComponent(calcular);
         getContentPane().add(tensaoSaida);
         tensaoSaida.setBounds(140, 120, 80, 24);
 
@@ -89,18 +88,30 @@ public class Main extends javax.swing.JFrame {
         jLabel4.setBounds(30, 120, 93, 16);
 
         calcular.setText("Calcular");
+        calcular.setNextFocusableComponent(jButton2);
         calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 calcularActionPerformed(evt);
+            }
+        });
+        calcular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                calcularKeyPressed(evt);
             }
         });
         getContentPane().add(calcular);
         calcular.setBounds(270, 20, 77, 32);
 
         jButton2.setText("Limpar");
+        jButton2.setNextFocusableComponent(tensaoEntrada);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
             }
         });
         getContentPane().add(jButton2);
@@ -122,70 +133,33 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(230, 120, 29, 16);
 
-        imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/img/100px-Voltage_divider.svg.png"))); // NOI18N
-        getContentPane().add(imagem);
-        imagem.setBounds(370, 20, 100, 130);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/img/100px-Voltage_divider.svg.png"))); // NOI18N
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(360, 30, 100, 130);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularActionPerformed
-        tensaoSaida.setText("");
-        float R1;
-        if (resistor1.getText() == null || resistor1.getText().isEmpty()) {
-            R1 = 0;
-        } else {
-            R1 = Float.parseFloat(resistor1.getText());
-        }
-        float R2;
-        if (resistor2.getText() == null || resistor2.getText().isEmpty()) {
-            R2 = 0;
-        } else {
-            R2 = Float.parseFloat(resistor2.getText());
-        }
-        float VIN = 0;
-        if (tensaoEntrada.getText() == null || tensaoEntrada.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O valor de tensão de entrada deve ser informado", "Erro",JOptionPane.ERROR_MESSAGE);
-        } else {
-            VIN = Float.parseFloat(tensaoEntrada.getText());
-        }
-
-        float VOUT;
-        if (tensaoSaida.getText() == null || tensaoSaida.getText().isEmpty()) {
-            VOUT = 0;
-        } else {
-            VOUT = Float.parseFloat(tensaoSaida.getText());
-        }
-       // JOptionPane.showMessageDialog(null, DivisorTensao.Calculo(R1, R2, VIN, VOUT));
-          
-        DecimalFormat df =  new DecimalFormat("0.00");
-        float resultado = DivisorTensao.Calculo(R1, R2, VIN, VOUT);
-        tensaoSaida.setText("" + df.format(resultado));
-
+        Calc.calcular();
     }//GEN-LAST:event_calcularActionPerformed
 
-    private void resistor1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_resistor1FocusLost
-        if(resistor1.getText() == null || resistor1.getText().isEmpty()){
-            calcular.setEnabled(false);
-        } else{
-        calcular.setEnabled(true);
-        }
-    }//GEN-LAST:event_resistor1FocusLost
-
-    private void resistor2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_resistor2FocusLost
-       if(resistor2.getText() == null || resistor2.getText().isEmpty()){
-            calcular.setEnabled(false);
-        } else{
-        calcular.setEnabled(true);
-        }
-    }//GEN-LAST:event_resistor2FocusLost
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        resistor1.setText("");
-        resistor2.setText("");
-        tensaoSaida.setText("");
-        tensaoEntrada.setText("");
+        Calc.limpar();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void calcularKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_calcularKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Calc.calcular();
+        }
+    }//GEN-LAST:event_calcularKeyPressed
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Calc.limpar();
+        }
+    }//GEN-LAST:event_jButton2KeyPressed
 
     /**
      * @param args the command line arguments
@@ -196,7 +170,7 @@ public class Main extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+ /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -209,6 +183,16 @@ public class Main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }*/
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                BasicLookAndFeel darcula = new DarculaLaf();
+
+                javax.swing.UIManager.setLookAndFeel(darcula);
+
+            }
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
@@ -224,8 +208,7 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton calcular;
-    private javax.swing.JLabel imagem;
-    private javax.swing.JButton jButton2;
+    public static javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -234,8 +217,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     public static javax.swing.JTextField resistor1;
-    public javax.swing.JTextField resistor2;
+    public static javax.swing.JTextField resistor2;
     public static javax.swing.JTextField tensaoEntrada;
     public static javax.swing.JTextField tensaoSaida;
     // End of variables declaration//GEN-END:variables
