@@ -7,8 +7,7 @@ package main;
 
 import com.bulenkov.darcula.DarculaLaf;
 import java.awt.event.KeyEvent;
-import java.text.DecimalFormat;
-import javax.swing.JOptionPane;
+
 import javax.swing.plaf.basic.BasicLookAndFeel;
 
 /**
