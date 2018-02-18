@@ -85,12 +85,15 @@ public static void calcular() {
     }
   ```
 ##### Criado por Wesley Ozebe
-##### Versão 1.2
+##### Versão 1.2.1
 
+##### Data da atualização 1.2.1: 17/02/2018
 ##### Data da atualização 1.2: 31/01/2018
 ##### Data da atualização 1.1: 25/01/2018
 ##### Data da atualização 1.0: 24/01/2018
 
+###### Mudanças da atualização 1.2.1:
+###### Adicionado a possibilidade de alterar o foco dos campos com o botão enter do teclado numérico.
 
 ###### Mudanças da atualização 1.2:
 ###### Corrigido um erro que causava exception caso tivesse os valores das duas tensões mas sem valores de resistores.
