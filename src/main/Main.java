@@ -42,12 +42,10 @@ public class Main extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cálculo de divisão de tensão");
+        setTitle("Divisor de tensão");
         setIconImage(getToolkit().createImage(getClass().getResource("/main/img/ico.png")));
-        setMinimumSize(new java.awt.Dimension(478, 220));
-        setPreferredSize(new java.awt.Dimension(478, 188));
+        setMinimumSize(new java.awt.Dimension(354, 170));
         setResizable(false);
-        getContentPane().setLayout(null);
 
         tensaoEntrada.setNextFocusableComponent(resistor1);
         tensaoEntrada.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -55,8 +53,6 @@ public class Main extends javax.swing.JFrame {
                 tensaoEntradaKeyPressed(evt);
             }
         });
-        getContentPane().add(tensaoEntrada);
-        tensaoEntrada.setBounds(140, 40, 80, 24);
 
         resistor1.setNextFocusableComponent(resistor2);
         resistor1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -64,8 +60,6 @@ public class Main extends javax.swing.JFrame {
                 resistor1KeyPressed(evt);
             }
         });
-        getContentPane().add(resistor1);
-        resistor1.setBounds(140, 70, 80, 24);
 
         resistor2.setNextFocusableComponent(tensaoSaida);
         resistor2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -73,8 +67,6 @@ public class Main extends javax.swing.JFrame {
                 resistor2KeyPressed(evt);
             }
         });
-        getContentPane().add(resistor2);
-        resistor2.setBounds(140, 100, 80, 24);
 
         tensaoSaida.setNextFocusableComponent(calcular);
         tensaoSaida.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -82,26 +74,16 @@ public class Main extends javax.swing.JFrame {
                 tensaoSaidaKeyPressed(evt);
             }
         });
-        getContentPane().add(tensaoSaida);
-        tensaoSaida.setBounds(140, 130, 80, 24);
 
         jLabel1.setText("Tensão de entrada");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 40, 106, 16);
 
         jLabel2.setText("                  R1");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(50, 70, 70, 16);
 
         jLabel3.setText("                  R2");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(50, 100, 70, 16);
 
         jLabel4.setText("Tensão de saída");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 130, 93, 16);
 
-        calcular.setText("Calcular");
+        calcular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/img/1063906-32.png"))); // NOI18N
         calcular.setNextFocusableComponent(jButton2);
         calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,10 +95,8 @@ public class Main extends javax.swing.JFrame {
                 calcularKeyPressed(evt);
             }
         });
-        getContentPane().add(calcular);
-        calcular.setBounds(270, 30, 77, 32);
 
-        jButton2.setText("Limpar");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/img/2561505-32.png"))); // NOI18N
         jButton2.setNextFocusableComponent(tensaoEntrada);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,32 +108,102 @@ public class Main extends javax.swing.JFrame {
                 jButton2KeyPressed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(270, 70, 77, 32);
 
         jLabel5.setText("Volts");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(230, 40, 29, 16);
 
         jLabel6.setText("ohms");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(230, 70, 32, 16);
 
         jLabel7.setText("ohms");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(230, 100, 32, 16);
 
         jLabel8.setText("Volts");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(230, 130, 29, 16);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/img/100px-Voltage_divider.svg.png"))); // NOI18N
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(360, 20, 100, 130);
 
-        jLabel10.setText("v1.2.1");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(430, 170, 48, 16);
+        jLabel10.setText("v1.2.2");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel4)))
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tensaoEntrada)
+                            .addComponent(resistor1)
+                            .addComponent(resistor2)
+                            .addComponent(tensaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10)
+                        .addContainerGap())))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel2)
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel3)
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tensaoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(resistor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(resistor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(tensaoSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel6)
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel7)
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel8)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -161,6 +211,7 @@ public class Main extends javax.swing.JFrame {
 
     private void calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularActionPerformed
         Calc.calcular();
+      
     }//GEN-LAST:event_calcularActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

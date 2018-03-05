@@ -84,5 +84,8 @@ public class Calc {
         resistor2.setText("");
         tensaoSaida.setText("");
         tensaoEntrada.setText("");
+        
     }
+    
+
 }
