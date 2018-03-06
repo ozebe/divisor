@@ -85,12 +85,17 @@ public static void calcular() {
     }
   ```
 ##### Criado por Wesley Ozebe
-##### Versão 1.2.1
+##### Versão 1.2.2 Final
 
+##### Data da atualização 1.2.2: 05/03/2018
 ##### Data da atualização 1.2.1: 17/02/2018
 ##### Data da atualização 1.2: 31/01/2018
 ##### Data da atualização 1.1: 25/01/2018
 ##### Data da atualização 1.0: 24/01/2018
+
+###### Mudanças da atualização 1.2.2:
+###### Modificado o layout do programa
+###### Corrigido todos os bugs restantes
 
 ###### Mudanças da atualização 1.2.1:
 ###### Adicionado a possibilidade de alterar o foco dos campos com o botão enter do teclado numérico.
